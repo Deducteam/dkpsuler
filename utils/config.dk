@@ -1,0 +1,57 @@
+[] ex2 cic.type --> 
+[] eq cic.prop --> eq _prop
+[] eq cic.type --> eq _type
+[] False cic.prop --> False _prop
+[] False cic.type --> False _type
+[] Not cic.prop --> Not _prop
+[] Not cic.type --> Not _type
+[] And cic.prop --> And _prop
+[] And cic.type --> And _type
+[] Or cic.prop --> Or _prop
+[] Or cic.type --> Or _type
+[] ex cic.prop --> ex _prop
+[] ex cic.type --> ex _type
+[] ex2 cic.prop --> ex2 _prop
+[] ex2 cic.type --> ex2 _type
+[] eq cic.prop --> eq_prop
+[] eq cic.type --> eq_type
+[] False cic.prop --> False_prop
+[] False cic.type --> False_type
+[] Not cic.prop --> Not_prop
+[] Not cic.type --> Not_type
+[] And cic.prop --> And_prop
+[] And cic.type --> And_type
+[] Or cic.prop --> Or_prop
+[] Or cic.type --> Or_type
+[] ex cic.prop --> ex_prop
+[] ex cic.type --> ex_type
+[] ex2 cic.prop --> ex2_prop
+[] ex2 cic.type --> ex2_type
+[] match_eq cic.prop --> match_eq_prop
+[] match_eq cic.type --> match_eq_type
+[] filter_eq cic.prop --> filter_eq_prop
+[] filter_eq cic.type --> filter_eq_type
+[] match_False cic.prop --> match_False_prop
+[] match_False cic.type --> match_False_type
+[] filter_False cic.prop --> filter_False_prop
+[] filter_False cic.type --> filter_False_type
+[] match_Not cic.prop --> match_Not_prop
+[] match_Not cic.type --> match_Not_type
+[] filter_Not cic.prop --> filter_Not_prop
+[] filter_Not cic.type --> filter_Not_type
+[] match_And cic.prop --> match_And_prop
+[] match_And cic.type --> match_And_type
+[] filter_And cic.prop --> filter_And_prop
+[] filter_And cic.type --> filter_And_type
+[] match_Or cic.prop --> match_Or_prop
+[] match_Or cic.type --> match_Or_type
+[] filter_Or cic.prop --> filter_Or_prop
+[] filter_Or cic.type --> filter_Or_type
+[] match_ex cic.prop --> match_ex_prop
+[] match_ex cic.type --> match_ex_type
+[] filter_ex cic.prop --> filter_ex_prop
+[] filter_ex cic.type --> filter_ex_type
+[] match_ex2 cic.prop --> match_ex2_prop
+[] match_ex2 cic.type --> match_ex2_type
+[] filter_ex2 cic.prop --> filter_ex2_prop
+[] filter_ex2 cic.type --> filter_ex2_type
