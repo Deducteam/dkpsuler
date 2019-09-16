@@ -1,0 +1,29 @@
+# Dune files.
+_build/
+*.native
+*.docdir
+.merlin
+*.install
+
+# Dedukti files.
+*.dko
+*.dep
+.depend
+experiments/**/output/*.dk
+meta/**/*.dk
+
+
+# Editor temporary files.
+*~
+\#*\#
+.\#*
+*.bak
+*.baki
+
+# LaTeX files
+*.aux
+*.log
+*.pdf
+*.pyg
+*.thm
+LaTeX/

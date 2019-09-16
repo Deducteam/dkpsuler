@@ -1,0 +1,19 @@
+synopsis: "Yet another tool in the Dedukti landscape"
+description:
+"""
+Tool to instantiate parameters
+"""
+opam-version: "0.1"
+maintainer: "francois.thire@lsv.fr"
+bug-reports: "https://github.com/francoisthire/dkpsuler/issues"
+homepage: "https://github.com/francoisthire/dkpsuler"
+dev-repo: "git+https://github.com/francoisthire/dkpsuler.git"
+authors: [ "François Thiré <francois.thire@lsv.fr>" ]
+license: "CeCILL"
+
+depends: [
+  "ocaml"        {         >= "4.04.0" }
+  "dedukti"
+]
+
+build: [ [ "dune" "build" "-p" name "-j" jobs ] ]

@@ -1,0 +1,5 @@
+(executable
+        (name dkpsuler)
+        (public_name dkpsuler)
+        (package dkpsuler)
+        (libraries dkmeta dedukti))
