@@ -62,12 +62,13 @@ let handle_config in_path =
   List.iter mk_entry entries;
   let rules = Hashtbl.fold (fun _ info rules ->
       (List.map (fun v -> v.rule) info)@rules) config [] in
-  meta := Some (Dkmeta.meta_of_rules rules Dkmeta.default_config)
+  Signature.fail_on_symbol_not_found := false;
+  meta := Some (Dkmeta.meta_of_rules rules Dkmeta.default_config);
+  Signature.fail_on_symbol_not_found := true
 
 let mk_decl lc st info =
   let ty = E.infer (Rule.pattern_to_term info.mpat) in
   let e = Entry.Decl(lc,B.id info.name, st, ty) in
-  Format.eprintf "%a@." Pp.print_name info.name;
   TC.handle_entry e;
   e
 
@@ -124,22 +125,18 @@ let mk_rules lc rs info =
   TC.handle_entry e;
   e
 
-
-(* TODO normalize stuff *)
 let handle_entry = fun md entry ->
   let open Entry in
   let entry = normalize md entry in
   TC.handle_entry entry;
   match entry with
   | Decl(lc,id,st,_) ->
-    Format.eprintf "%a@." Pp.print_ident id;
     let cst = B.mk_name md id in
     if Hashtbl.mem config cst then
       List.map (mk_decl lc st) (Hashtbl.find config cst)
     else
       [entry]
   | Def(lc,id,opaque,ty_opt,te) ->
-    Format.eprintf "%a@." Pp.print_ident id;
     let cst = B.mk_name md id in
     if Hashtbl.mem config cst then
       List.map (mk_def lc opaque ty_opt te) (Hashtbl.find config cst)
@@ -183,15 +180,17 @@ let run_on_file in_path =
   F.close out_file
 
 let _ =
-  let options = Arg.align cmd_options in
-  let usage = "Usage: " ^ Sys.argv.(0) ^ " [OPTION]... [FILE]... \n" in
-  let usage = usage ^ "Available options:" in
-  let files =
-    let files = ref [] in
-    Arg.parse options (fun f -> files := f :: !files) usage;
-    List.rev !files
-  in
   try
+    let options = Arg.align cmd_options in
+    let usage = "Usage: " ^ Sys.argv.(0) ^ " [OPTION]... [FILE]... \n" in
+    let usage = usage ^ "Available options:" in
+    let files =
+      let files = ref [] in
+      Arg.parse options (fun f -> files := f :: !files) usage;
+      List.rev !files
+    in
     List.iter run_on_file files
   with
   | Env.EnvError(md,l,e) -> Errors.fail_env_error(md,l,e)
+  | Signature.SignatureError e ->
+     Errors.fail_env_error(None,Basic.dloc, Env.EnvErrorSignature e)
