@@ -1,4 +1,4 @@
-module B = Basic
+module B = Kernel.Basic
 
 (** path to a file *)
 type path = string
@@ -66,8 +66,8 @@ let get_out_path : path -> step -> path = fun path step ->
     | Some dir -> add_dir dir file_suffix
 
 (** [md_of_file f] returns the [mident] of the file [f] *)
-let md_of_path : path -> Basic.mident = fun path ->
-  Basic.mk_mident (Filename.basename path)
+let md_of_path : path -> B.mident = fun path ->
+  B.mk_mident (Filename.basename path)
 
 (** [from_string f s] returns the filename that corresponds to the step [s] for file [f] *)
 let out_from_string : path -> step -> cout t = fun path step ->

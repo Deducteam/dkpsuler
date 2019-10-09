@@ -1,4 +1,4 @@
-files=$1
+files=$*
 regex="def match_(.*) :" # get inductive names
 theory="cic"
 for f in $files

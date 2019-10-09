@@ -2,4 +2,4 @@
         (name dkpsuler)
         (public_name dkpsuler)
         (package dkpsuler)
-        (libraries dkmeta dedukti))
+        (libraries dkmeta dedukti.api dedukti.parsers dedukti.kernel))
