@@ -4,6 +4,7 @@ _build/
 *.docdir
 .merlin
 *.install
+dkpsuler
 
 # Dedukti files.
 *.dko
